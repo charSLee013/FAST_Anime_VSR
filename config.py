@@ -92,7 +92,7 @@ class configuration:
     # Note2: If you want to have a lower data size (lower bitrate and lower bits/pixel):
     #   You can use HEVC(H.265) as the encoder by appending ["-c:v", "libx265"], but the whole processing speed will be lower due to the increased complexity
 
-    encode_params = ['-crf', '23', '-preset', 'medium', "-tune", "animation", "-c:v", "hevc_nvenc"]        
+    encode_params = ['-crf', '18', '-preset', 'slow', "-tune", "animation", "-c:v", "hevc_nvenc"]        
     ######################################################################################################################################
 
 

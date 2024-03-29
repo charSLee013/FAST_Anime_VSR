@@ -50,7 +50,7 @@ def mass_process(input_folder_dir, output_dir_parent):
 
         # Find the name of input and ouput
         input_dir = os.path.join(input_folder_dir, filename)
-        output_name = os.path.join(output_dir_parent, target_name + "_processed.mp4")
+        output_name = os.path.join(output_dir_parent, target_name + "_processed.mkv")
         print("We are super resolving {} and we will save it at {}".format(input_dir, output_name))
 
 

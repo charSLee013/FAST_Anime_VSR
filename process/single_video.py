@@ -129,7 +129,7 @@ def split_video(input_file, parallel_num):
 
 
     # Split audio
-    audio_split_cmd = "ffmpeg -i " + input_file +  " -map 0:a -c copy tmp/output_audio.m4a"
+    audio_split_cmd = "ffmpeg -i " + input_file +  " -map 0:a -c copy tmp/output_audio.mkv"
     os.system(audio_split_cmd)
 
     # Divide videos to segments
@@ -170,8 +170,8 @@ def combine_video(target_output, parallel_num):
 
     # If audio exists, we can append them inside the final output video
     additional_cmd = " "
-    if os.path.exists("tmp/output_audio.m4a"):
-        additional_cmd += " -i tmp/output_audio.m4a -c:a aac -strict experimental "
+    if os.path.exists("tmp/output_audio.mkv"):
+        additional_cmd += " -i tmp/output_audio.mkv -c:a copy -strict experimental "
     
 
     second_adidional = " "
