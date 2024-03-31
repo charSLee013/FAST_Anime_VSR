@@ -129,11 +129,11 @@ def split_video(input_file, parallel_num):
 
 
     # Split audio
-    audio_split_cmd = "ffmpeg -i " + input_file +  " -map 0:a -c copy tmp/output_audio.mkv"
+    audio_split_cmd = f"ffmpeg -i '{input_file}' -map 0:a -c copy tmp/output_audio.mkv"
     os.system(audio_split_cmd)
 
     # Divide videos to segments
-    ffmpeg_divide_cmd = "ffmpeg -i  " + input_file +  " -f segment -an -codec copy -loglevel quiet -segment_time " + str(divide_time) + " -reset_timestamps 1 tmp/part%01d." + configuration.input_video_format
+    ffmpeg_divide_cmd = "ffmpeg -i '{input_file}' -f segment -an -codec copy -loglevel quiet -segment_time " + str(divide_time) + " -reset_timestamps 1 tmp/part%01d." + configuration.input_video_format
     os.system(ffmpeg_divide_cmd)
     
 
@@ -181,7 +181,7 @@ def combine_video(target_output, parallel_num):
     else:
         second_adidional = " -c copy "
 
-    ffmpeg_combine_cmd = "ffmpeg -f concat -i tmp/target.txt " + additional_cmd + " -loglevel quiet " + second_adidional +  target_output
+    ffmpeg_combine_cmd = f"ffmpeg -f concat -i tmp/target.txt {additional_cmd} -loglevel quiet {second_adidional} {target_output}"
     os.system(ffmpeg_combine_cmd)
 
     print("The video is combined back from processed_parts!")
@@ -189,7 +189,7 @@ def combine_video(target_output, parallel_num):
 
 
 def extract_subtitle(dir):
-    ffmpeg_extract_subtitle_cmd = "ffmpeg -i " + dir + " -map 0:s:0 tmp/subtitle.srt"
+    ffmpeg_extract_subtitle_cmd = f"ffmpeg -i '{dir}' -map 0:s:0 tmp/subtitle.srt"
     os.system(ffmpeg_extract_subtitle_cmd)
     
 
