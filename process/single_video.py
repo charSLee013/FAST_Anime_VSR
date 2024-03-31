@@ -133,7 +133,7 @@ def split_video(input_file, parallel_num):
     os.system(audio_split_cmd)
 
     # Divide videos to segments
-    ffmpeg_divide_cmd = "ffmpeg -i '{input_file}' -f segment -an -codec copy -loglevel quiet -segment_time " + str(divide_time) + " -reset_timestamps 1 tmp/part%01d." + configuration.input_video_format
+    ffmpeg_divide_cmd = f"ffmpeg -i '{input_file}' -f segment -an -codec copy -loglevel quiet -segment_time " + str(divide_time) + " -reset_timestamps 1 tmp/part%01d." + configuration.input_video_format
     os.system(ffmpeg_divide_cmd)
     
 
